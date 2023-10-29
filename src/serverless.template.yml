@@ -1,0 +1,6 @@
+name: aws-indra-express-dynamo
+org: INDRA
+description: Deploys a Node Express API service with Serverless Framework
+keywords: aws, serverless, faas, lambda, node, express, dynamo
+repo: https://github.com/begincore/Indra-Test-Node.git
+license: INDRA
