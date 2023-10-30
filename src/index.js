@@ -190,6 +190,7 @@ app.get("/peoples/:peopleId", (req, res, next) => {
    *  get:
    *    summary: Get information of a book of library
    *    description: Use to request information about library book
+   *    produces:
    *       - application/json
    *    parameters:
    *       - in: path
@@ -229,8 +230,7 @@ app.get("/books/:bookId", async function (req, res) {
    * @swagger
    * /books/addBook:
    *  post:
-   *    summary: Add a book to tthe library
-   *       - application/json
+   *    summary: Add a book to the library
    *    parameters:
    *      - in: body
    *        name: bookId
