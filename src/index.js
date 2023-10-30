@@ -11,12 +11,15 @@ const {
   PutCommand,
 } = require("@aws-sdk/lib-dynamodb");
 
+const uuid = require("./utils/validationutils.js");
+
 const BOOKS_TABLE = process.env.BOOKS_TABLE;
 const client = new DynamoDBClient();
 const dynamoDbClient = DynamoDBDocumentClient.from(client);
 
 app.use(express.json());
 app.use("/api-docs",require("./api-docs.js"));
+
 
 /**
    * @swagger
@@ -203,6 +206,14 @@ app.get("/peoples/:peopleId", (req, res, next) => {
    *         description: Information of planet
 */
 app.get("/books/:bookId", async function (req, res) {
+
+  if(!uuid.validateUUID(req.params.bookId)){
+    return res.status(400).json({
+      code: 110,
+      messsage  : 'The bookId must be a UUID value'
+    });
+  }
+
   const params = {
     TableName: BOOKS_TABLE,
     Key: {
@@ -251,9 +262,14 @@ app.get("/books/:bookId", async function (req, res) {
 app.post("/books/addBook", async function (req, res) {
   const { bookId, name } = req.body;
   if (typeof bookId !== "string") {
-    res.status(400).json({ error: '"bookId" must be a string' });
+    res.status(400).json({ code: 110, message: '"bookId" must be a string' });
+    return;
   } else if (typeof name !== "string") {
-    res.status(400).json({ error: '"name" must be a string' });
+    res.status(400).json({ code: 110, message: '"name" must be a string' });
+    return;
+  }else if(!uuid.validateUUID(bookId)){
+    res.status(400).json({ code: 110, message: 'The bookId must be a UUID value' });
+    return;
   }
 
   const params = {
