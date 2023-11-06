@@ -39,7 +39,7 @@ Para consultar un planeta del **Universo e Star Wars** hay que hacer un **Get** 
 ## Consultar los Personajes de Star Wars
 Para consultar todos los **Personajes de Star Wars** hay que hacer un **Get** a la url [https://dm8jf90ee6.execute-api.us-east-1.amazonaws.com/peoples](https://dm8jf90ee6.execute-api.us-east-1.amazonaws.com/peoples)
 
-## Consultar un planeta de Star Warse
+## Consultar un personaje de Star Warse
 Para consultar un Personaje del **Universo e Star Wars** hay que hacer un **Get** a la url [https://dm8jf90ee6.execute-api.us-east-1.amazonaws.com/peoples/1](https://dm8jf90ee6.execute-api.us-east-1.amazonaws.com/peoples/1), donde *el valor 1* es el id del personaje a consultar
 
 > Los Endpoint de la Api (Api Gateway + Lambda) estan consultando a las Api (SWAPI) de Star Wars, SWAPI devuelve la información en Ingles, pero se esta haciendo la traducción al Español para su mejor entendimiento.
