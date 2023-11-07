@@ -1,4 +1,4 @@
-const mapper = require('./mapper.js');
+const mapper = require('./utils/mapper.js');
 const config = require('./config.js');
 const serverless = require("serverless-http");
 const express = require("express");
